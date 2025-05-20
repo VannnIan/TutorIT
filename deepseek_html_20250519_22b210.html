@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | TutorIT</title>
+    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .profile-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #7f6b2f; /* Darker gold border */
+        }
+        
+        .profile-info {
+            flex: 1;
+            background: #d4b688; /* Solid beige background */
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #7f6b2f; /* Darker gold border */
+        }
+        
+        .profile-section {
+            margin-bottom: 30px;
+        }
+        
+        .profile-section h3 {
+            color: #2b2512; /* Dark brown text */
+            font-size: 24px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #7f6b2f; /* Darker gold border */
+            padding-bottom: 5px;
+        }
+        
+        .profile-details {
+            color: #2b2512; /* Dark brown text */
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .profile-details strong {
+            color: #5a4a2a; /* Slightly darker brown for emphasis */
+        }
+        
+        .expertise-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .expertise-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            color: #2b2512; /* Dark brown text */
+        }
+        
+        .expertise-list li:before {
+            content: "•";
+            color: #7f6b2f; /* Darker gold bullet */
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+        
+        .account-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .account-table td {
+            padding: 10px;
+            border-bottom: 1px solid #7f6b2f; /* Darker gold border */
+            color: #2b2512; /* Dark brown text */
+        }
+        
+        .account-table td:first-child {
+            width: 40%;
+            color: #5a4a2a; /* Slightly darker brown for labels */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <h2>
+                <a href="./index.html" class="logo">TutorIT</a>
+            </h2>
+            <div class="navigation">
+                <a href="./index.html">Home</a>
+                <a href="#">Subjects</a>
+                <a href="#">Study Room</a>
+                <a href="#">Quizzes</a>
+                <a href="#">Logout</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="info">
+                <h2>My Profile <span>@angelica_ragnivar</span></h2>
+                
+                <div class="profile-container">
+                    <div>
+                        <img src="profile-photo.jpg" alt="Profile Photo" class="profile-photo">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-section">
+                            <h3>Personal Information</h3>
+                            <div class="profile-details">
+                                <strong>Name:</strong> Angelica Regnivár<br>
+                                <strong>Phone:</strong> 62 10236710237<br>
+                                <strong>Email:</strong> Angelica.Ragnivár@linux.ac.id
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h3>Expertise</h3>
+                            <ul class="expertise-list">
+                                <li>Human and Computer Interaction</li>
+                                <li>Algorithm and Programming</li>
+                                <li>Bohas Indonesia</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <h3>Account Information</h3>
+                            <table class="account-table">
+                                <tr>
+                                    <td>Password last change</td>
+                                    <td>12/01/2025</td>
+                                </tr>
+                                <tr>
+                                    <td>Registered on</td>
+                                    <td>12/12/2024</td>
+                                </tr>
+                                <tr>
+                                    <td>Student Status</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>Account ID</td>
+                                    <td>128746202831012</td>
+                                </tr>
+                                <tr>
+                                    <td>NIM</td>
+                                    <td>27022273812</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button-container" style="margin-top: 30px;">
+                    <a href="#" class="login-button">Edit Profile</a>
+                    <a href="#" class="register-button">Study History</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="media-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz - TutorIT</title>
+    <link rel="stylesheet" href="CSS/quiz.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz: Computer Network Basics</h1>
+        <form id="quizForm">
+            <div class="question" id="q1">
+                <p>1. Apa kepanjangan dari IP dalam jaringan komputer?</p>
+                <label><input type="radio" name="q1" value="a"> Internet Protocol</label><br>
+                <label><input type="radio" name="q1" value="b"> Internal Provider</label><br>
+                <label><input type="radio" name="q1" value="c"> Internet Provider</label>
+            </div>
+            <div class="question" id="q2">
+                <p>2. Perangkat mana yang digunakan untuk menghubungkan dua jaringan yang berbeda?</p>
+                <label><input type="radio" name="q2" value="a"> Switch</label><br>
+                <label><input type="radio" name="q2" value="b"> Router</label><br>
+                <label><input type="radio" name="q2" value="c"> Hub</label>
+            </div>
+            <div class="question" id="q3">
+                <p>3. Protokol apa yang digunakan untuk mentransfer halaman web?</p>
+                <label><input type="radio" name="q3" value="a"> FTP</label><br>
+                <label><input type="radio" name="q3" value="b"> SMTP</label><br>
+                <label><input type="radio" name="q3" value="c"> HTTP</label>
+            </div>
+            <button type="button" onclick="submitQuiz()">Kirim Jawaban</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="JS/quiz.js"></script>
+</body>
+</html>

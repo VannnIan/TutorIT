@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Room | Tutor IT</title>
+    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .study-room-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px auto;
+            max-width: 800px;
+            background: #d4b688;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #7f6b2f;
+        }
+        
+        .menu-items {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .menu-item {
+            color: #2b2512;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            border-bottom: 3px solid #7f6b2f;
+            color: #5a4a2a;
+        }
+        
+        .video-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 30px 0;
+        }
+        
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #f0e6d2;
+            border: 5px solid #7f6b2f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5a4a2a;
+            font-weight: bold;
+        }
+        
+        .call-controls {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #7f6b2f;
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            background: #5a4a2a;
+            transform: scale(1.1);
+        }
+        
+        .control-btn.end-call {
+            background: #c0392b;
+        }
+        
+        .control-btn.end-call:hover {
+            background: #962d22;
+        }
+        
+        .logo-title {
+            font-size: 32px;
+            color: #2b2512;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <h2>
+                <a href="./index.html" class="logo">Tutor IT</a>
+            </h2>
+            <div class="navigation">
+                <a href="./index.html">Home</a>
+                <a href="#">Subjects</a>
+                <a href="#" class="active">Study Room</a>
+                <a href="#">Quizzes</a>
+                <a href="#">Logout</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="info">
+                <h2>Study Room <span>@angelica_ragnivar</span></h2>
+                
+                <div class="study-room-container">
+                    <div class="logo-title">Tutor IT</div>
+                    
+                    <div class="menu-items">
+                        <a href="#" class="menu-item active">HomePage</a>
+                        <a href="#" class="menu-item">Subject</a>
+                        <a href="#" class="menu-item">Study Room</a>
+                        <a href="#" class="menu-item">Review</a>
+                    </div>
+                    
+                    <div class="video-container">
+                        <div class="profile-circle">You</div>
+                        <div class="profile-circle">Partner</div>
+                    </div>
+                    
+                    <div class="call-controls">
+                        <button class="control-btn" title="Share Screen">
+                            <i class="fas fa-desktop"></i>
+                        </button>
+                        <button class="control-btn" title="Camera">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button class="control-btn" title="Microphone">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="control-btn end-call" title="End Call">
+                            <i class="fas fa-phone-slash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="media-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </section>
+</body>
+</html>
