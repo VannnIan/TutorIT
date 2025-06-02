@@ -7,86 +7,229 @@
     <link rel="stylesheet" href="./CSS/styleSheet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        /* RESET AND OVERRIDE STYLES */
+        body, html {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        section {
+            min-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            position: relative !important;
+        }
+        
+        /* Updated Header Navigation Styles */
+        header .navigation {
+            display: flex !important;
+            gap: 15px !important;
+            margin-right: 50px !important;
+        }
+
+        .nav-pill {
+            color: #7f6b2f !important;
+            background: #FAF0E6 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            letter-spacing: 1px !important;
+            padding: 12px 25px !important;
+            border-radius: 25px !important;
+            font-size: 16px !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid transparent !important;
+        }
+
+        .nav-pill:hover {
+            background-color: #e6d7c3 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .nav-pill.active {
+            background-color: #d4b688 !important;
+            color: #2b2512 !important;
+            border: 2px solid #7f6b2f !important;
+            font-weight: 600 !important;
+        }
+
+        /* Remove old navigation styles */
+        header .navigation a:not(.nav-pill) {
+            display: none !important;
+        }
+        
+        /* CENTERING STYLES */
+        .content {
+            flex: 1 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+        }
+        
+        .info {
+            width: 100% !important;
+            max-width: 1200px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            margin: 0 auto !important;
+        }
+        
+        .info h2 {
+            width: 100% !important;
+            text-align: center !important;
+            margin-bottom: 30px !important;
+            color: #ffffff !important;
+            font-size: 50px !important;
+        }
+        
+        .info h2 span {
+            color: #B9B4C7 !important;
+            font-size: 30px !important;
+        }
+        
         .profile-container {
-            display: flex;
-            gap: 40px;
-            margin-top: 30px;
+            display: flex !important;
+            gap: 40px !important;
+            margin: 0 auto !important;
+            width: 90% !important;
+            max-width: 1000px !important;
+            background: #d4b688 !important;
+            padding: 40px !important;
+            border-radius: 20px !important;
+            border: 1px solid #7f6b2f !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+            box-sizing: border-box !important;
+            align-items: flex-start !important;
         }
         
         .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #7f6b2f; /* Darker gold border */
+            width: 200px !important;
+            height: 200px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+            border: 5px solid #7f6b2f !important;
+            flex-shrink: 0 !important;
         }
         
         .profile-info {
-            flex: 1;
-            background: #d4b688; /* Solid beige background */
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #7f6b2f; /* Darker gold border */
+            flex: 1 !important;
+            background: transparent !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            border: none !important;
         }
         
         .profile-section {
-            margin-bottom: 30px;
+            margin-bottom: 30px !important;
         }
         
         .profile-section h3 {
-            color: #2b2512; /* Dark brown text */
-            font-size: 24px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #7f6b2f; /* Darker gold border */
-            padding-bottom: 5px;
+            color: #2b2512 !important;
+            font-size: 24px !important;
+            margin-bottom: 15px !important;
+            border-bottom: 2px solid #7f6b2f !important;
+            padding-bottom: 5px !important;
         }
         
         .profile-details {
-            color: #2b2512; /* Dark brown text */
-            font-size: 18px;
-            line-height: 1.6;
+            color: #2b2512 !important;
+            font-size: 18px !important;
+            line-height: 1.6 !important;
         }
         
         .profile-details strong {
-            color: #5a4a2a; /* Slightly darker brown for emphasis */
+            color: #5a4a2a !important;
         }
         
         .expertise-list {
-            list-style-type: none;
-            padding-left: 0;
+            list-style-type: none !important;
+            padding-left: 0 !important;
         }
         
         .expertise-list li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 20px;
-            color: #2b2512; /* Dark brown text */
+            margin-bottom: 8px !important;
+            position: relative !important;
+            padding-left: 20px !important;
+            color: #2b2512 !important;
         }
         
         .expertise-list li:before {
-            content: "•";
-            color: #7f6b2f; /* Darker gold bullet */
-            position: absolute;
-            left: 0;
-            font-size: 20px;
+            content: "•" !important;
+            color: #7f6b2f !important;
+            position: absolute !important;
+            left: 0 !important;
+            font-size: 20px !important;
         }
         
         .account-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+            width: 100% !important;
+            border-collapse: collapse !important;
+            margin-top: 15px !important;
         }
         
         .account-table td {
-            padding: 10px;
-            border-bottom: 1px solid #7f6b2f; /* Darker gold border */
-            color: #2b2512; /* Dark brown text */
+            padding: 10px !important;
+            border-bottom: 1px solid #7f6b2f !important;
+            color: #2b2512 !important;
         }
         
         .account-table td:first-child {
-            width: 40%;
-            color: #5a4a2a; /* Slightly darker brown for labels */
-            font-weight: bold;
+            width: 40% !important;
+            color: #5a4a2a !important;
+            font-weight: bold !important;
+        }
+        
+        .button-container {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 30px !important;
+            margin-top: 30px !important;
+            width: 100% !important;
+        }
+        
+        .login-button, .register-button {
+            background-color: #FAF0E6 !important;
+            color: #7f6b2f !important;
+            font-size: 20px !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            letter-spacing: 2px !important;
+            padding: 15px 40px !important;
+            border-radius: 50px !important;
+            transition: all 0.3s !important;
+        }
+
+        .login-button:hover, .register-button:hover {
+            background-color: #9e9470 !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        /* Ensure media icons stay at bottom */
+        .media-icons {
+            margin-top: auto !important;
+            width: 100% !important;
+            text-align: center !important;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            
+            .profile-photo {
+                margin-bottom: 20px !important;
+            }
         }
     </style>
 </head>
@@ -97,11 +240,11 @@
                 <a href="./index.html" class="logo">TutorIT</a>
             </h2>
             <div class="navigation">
-                <a href="./index.html">Home</a>
-                <a href="#">Mata Kuliah</a>
-                <a href="deepseek_html_20250519_29fa60.html">Ruang Belajar</a>
-                <a href="#">Review</a>
-                <a href="quiz">Kuis</a>
+                <a href="./index.html" class="nav-pill">Home</a>
+                <a href="#" class="nav-pill">Mata Kuliah</a>
+                <a href="#" class="nav-pill">Ruang Belajar</a>
+                <a href="#" class="nav-pill">Review</a>
+                <a href="#" class="nav-pill">Kuis</a>
             </div>
         </header>
 
@@ -128,7 +271,7 @@
                             <ul class="expertise-list">
                                 <li>Human and Computer Interaction</li>
                                 <li>Algorithm and Programming</li>
-                                <li>Bohas Indonesia</li>
+                                <li>Bahasa Indonesia</li>
                             </ul>
                         </div>
                         
@@ -160,7 +303,7 @@
                     </div>
                 </div>
                 
-                <div class="button-container" style="margin-top: 30px;">
+                <div class="button-container">
                     <a href="#" class="login-button">Edit Profile</a>
                     <a href="#" class="register-button">Study History</a>
                 </div>
