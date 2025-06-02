@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./CSS/register.css">
+    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <section>
+    <header>
+        <h2>
+            <a href="./index.html" class="logo">TutorIT</a>
+        </h2>
+        <div class="navigation">
+                <a href="./index.html">Home</a>
+                <a href="#">Mata Kuliah</a>
+                <a href="matchingRoom.html">Ruang Belajar</a>
+                <a href="#">Review</a>
+                <a href="quiz.html">Kuis</a>
+         </div>
+    </header>
+    <div class="wrapper">
+    <div class="column left-column">
+      <h1>Register</h1>
+      <form action="login.html" method="get">
+        <div class="input-box">
+          <input type="text" placeholder="Username" required />
+        </div>
+        <div class="input-box">
+          <input type="email" placeholder="Email" required />
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Sandi" required />
+        </div>
+        <div class="input-box">
+          <input type="number" placeholder="NIM" required />
+        </div>
+      </form>
+    </div>
+    <div class="column right-column">
+      <form action="login.html" method="get">
+        <div class="input-box">
+          <select name="region" required>
+            <option value="" disabled selected>Pilih Region</option>
+            <option value="Bekasi">Bekasi</option>
+            <option value="Kemanggisan">Kemanggisan</option>
+            <option value="Alam Sutera">Alam Sutera</option>
+            <option value="Malang">Malang</option>
+            <option value="Bandung">Bandung</option>
+            <option value="Senayan">Senayan</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <input type="number" placeholder="Semester" required />
+        </div>
+        <div class="input-box">
+          <input type="date" placeholder="Tanggal Lahir" required />
+        </div>
+        <div class="input-box">
+          <button type="submit" class="btn">Selanjutnya</button>
+        </div>
+      </form>
+    </div>
+  </div>
+    </section>
+</body>
+</html>

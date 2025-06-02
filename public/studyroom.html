@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Room | Tutor IT</title>
+    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* RESET AND OVERRIDE STYLES - More specific to avoid conflicts */
+        body, html {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        section {
+            min-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            position: relative !important;
+        }
+        
+        /* Override any existing content styles */
+        .content {
+            flex: 1 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Override info styles to ensure centering */
+        .info {
+            width: 100% !important;
+            max-width: 1000px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            margin: 0 auto !important;
+        }
+        
+        /* Make sure the heading is centered */
+        .info h2 {
+            width: 100% !important;
+            text-align: center !important;
+            margin-bottom: 30px !important;
+        }
+        
+        /* Ensure the container is centered */
+        .study-room-container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 90% !important;
+            max-width: 900px !important;
+            margin: 0 auto !important;
+            background: #d4b688 !important;
+            padding: 40px !important;
+            border-radius: 20px !important;
+            border: 1px solid #7f6b2f !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Menu items styling */
+        .menu-items {
+            display: flex !important;
+            justify-content: space-around !important;
+            width: 100% !important;
+            margin-bottom: 40px !important;
+        }
+        
+        .menu-item {
+            color: #2b2512 !important;
+            font-size: 24px !important;
+            font-weight: bold !important;
+            text-decoration: none !important;
+            padding: 10px 20px !important;
+            border-bottom: 3px solid transparent !important;
+            transition: all 0.3s !important;
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            border-bottom: 3px solid #7f6b2f !important;
+            color: #5a4a2a !important;
+        }
+        
+        /* Video container - ensure this is centered */
+        .video-container {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 60px !important;
+            margin: 30px 0 !important;
+            width: 100% !important;
+        }
+        
+        .profile-circle {
+            width: 150px !important;
+            height: 150px !important;
+            border-radius: 50% !important;
+            background: #f0e6d2 !important;
+            border: 5px solid #7f6b2f !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #5a4a2a !important;
+            font-weight: bold !important;
+            font-size: 18px !important;
+        }
+        
+        .call-controls {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 30px !important;
+            margin-top: 30px !important;
+            width: 100% !important;
+        }
+        
+        .control-btn {
+            width: 60px !important;
+            height: 60px !important;
+            border-radius: 50% !important;
+            background: #7f6b2f !important;
+            color: white !important;
+            border: none !important;
+            font-size: 20px !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .control-btn:hover {
+            background: #5a4a2a !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .control-btn.end-call {
+            background: #c0392b !important;
+        }
+        
+        .control-btn.end-call:hover {
+            background: #962d22 !important;
+        }
+        
+        .logo-title {
+            font-size: 32px !important;
+            color: #2b2512 !important;
+            text-align: center !important;
+            margin-bottom: 30px !important;
+            font-weight: bold !important;
+        }
+        
+        /* Ensure media icons stay at bottom */
+        .media-icons {
+            margin-top: auto !important;
+            width: 100% !important;
+            text-align: center !important;
+        }
+
+        /* Updated Header Navigation Styles */
+        header .navigation {
+            display: flex !important;
+            gap: 15px !important;
+            margin-right: 50px !important;
+        }
+
+        .nav-pill {
+            color: #7f6b2f !important;
+            background: #FAF0E6 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            letter-spacing: 1px !important;
+            padding: 12px 25px !important;
+            border-radius: 25px !important;
+            font-size: 16px !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid transparent !important;
+        }
+
+        .nav-pill:hover {
+            background-color: #e6d7c3 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .nav-pill.active {
+            background-color: #d4b688 !important;
+            color: #2b2512 !important;
+            border: 2px solid #7f6b2f !important;
+            font-weight: 600 !important;
+        }
+
+        /* Remove old navigation styles */
+        header .navigation a:not(.nav-pill) {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <h2>
+                <a href="./index.html" class="logo">Tutor IT</a>
+            </h2>
+            <div class="navigation">
+                <a href="./index.html">Home</a>
+                <a href="#">Mata Kuliah</a>
+                <a href="matchingRoom.html">Ruang Belajar</a>
+                <a href="#">Review</a>
+                <a href="quiz.html">Kuis</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="info">
+                <h2>Study Room <span>@angelica_ragnivar</span></h2>
+                
+                <div class="study-room-container">
+                    <div class="logo-title">Tutor IT</div>
+                    
+                    <div class="menu-items">
+                        <a href="#" class="menu-item active">HomePage</a>
+                        <a href="#" class="menu-item">Subject</a>
+                        <a href="#" class="menu-item">Study Room</a>
+                        <a href="#" class="menu-item">Review</a>
+                    </div>
+                    
+                    <div class="video-container">
+                        <div class="profile-circle">You</div>
+                        <div class="profile-circle">Partner</div>
+                    </div>
+                    
+                    <div class="call-controls">
+                        <button class="control-btn" title="Share Screen">
+                            <i class="fas fa-desktop"></i>
+                        </button>
+                        <button class="control-btn" title="Camera">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button class="control-btn" title="Microphone">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="control-btn end-call" title="End Call" onclick="window.location.href='matchingRoom.html'">
+                            <i class="fas fa-phone-slash"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="media-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </section>
+ <script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  let peerConnection;
+  let localStream;
+  let remoteStream;
+  const config = {
+    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+  };
+
+  // Join matchmaking queue
+  socket.emit('join-waiting-room');
+
+  // Step 1: Get media (video/audio)
+  navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    .then(stream => {
+      localStream = stream;
+      document.querySelectorAll('.profile-circle')[0].innerHTML = '';
+      const video = document.createElement('video');
+      video.srcObject = stream;
+      video.autoplay = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.style.borderRadius = "50%";
+      video.style.width = "150px";
+      video.style.height = "150px";
+      document.querySelectorAll('.profile-circle')[0].appendChild(video);
+    });
+
+  // Matched with another user
+  socket.on('matched', ({ otherUserId }) => {
+    startCall(otherUserId);
+  });
+
+  socket.on('offer', async ({ sdp, socketId }) => {
+    peerConnection = createPeerConnection(socketId);
+    localStream.getTracks().forEach(track => {
+      peerConnection.addTrack(track, localStream);
+    });
+    await peerConnection.setRemoteDescription(new RTCSessionDescription(sdp));
+    const answer = await peerConnection.createAnswer();
+    await peerConnection.setLocalDescription(answer);
+    socket.emit('answer', { target: socketId, sdp: answer });
+  });
+
+  socket.on('answer', ({ sdp }) => {
+    peerConnection.setRemoteDescription(new RTCSessionDescription(sdp));
+  });
+
+  socket.on('ice-candidate', ({ candidate }) => {
+    if (candidate && peerConnection) {
+      peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+    }
+  });
+
+  function createPeerConnection(targetId) {
+    const pc = new RTCPeerConnection(config);
+    pc.onicecandidate = e => {
+      if (e.candidate) {
+        socket.emit('ice-candidate', { target: targetId, candidate: e.candidate });
+      }
+    };
+    pc.ontrack = e => {
+      if (!remoteStream) {
+        remoteStream = new MediaStream();
+        const video = document.createElement('video');
+        video.srcObject = remoteStream;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.style.borderRadius = "50%";
+        video.style.width = "150px";
+        video.style.height = "150px";
+        document.querySelectorAll('.profile-circle')[1].innerHTML = '';
+        document.querySelectorAll('.profile-circle')[1].appendChild(video);
+      }
+      remoteStream.addTrack(e.track);
+    };
+    return pc;
+  }
+
+  async function startCall(otherUserId) {
+    peerConnection = createPeerConnection(otherUserId);
+    localStream.getTracks().forEach(track => {
+      peerConnection.addTrack(track, localStream);
+    });
+    const offer = await peerConnection.createOffer();
+    await peerConnection.setLocalDescription(offer);
+    socket.emit('offer', { target: otherUserId, sdp: offer });
+  }
+</script>
+<script>
+  const shareScreenBtn = document.querySelector('.control-btn[title="Share Screen"]');
+
+  shareScreenBtn.addEventListener('click', async () => {
+    try {
+      const screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+
+      const screenTrack = screenStream.getVideoTracks()[0];
+
+      // Replace the existing video track in the peer connection
+      const sender = peerConnection.getSenders().find(s => s.track.kind === 'video');
+      if (sender) {
+        sender.replaceTrack(screenTrack);
+      }
+
+      // Show screen locally too
+      const localVideo = document.querySelectorAll('.profile-circle')[0].querySelector('video');
+      if (localVideo) {
+        localVideo.srcObject = screenStream;
+      }
+
+      // When user stops sharing, revert to webcam
+      screenTrack.onended = async () => {
+        const camStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        const camTrack = camStream.getVideoTracks()[0];
+        const newSender = peerConnection.getSenders().find(s => s.track.kind === 'video');
+        if (newSender) {
+          newSender.replaceTrack(camTrack);
+        }
+
+        if (localVideo) {
+          localVideo.srcObject = camStream;
+        }
+
+        // Update localStream for future use
+        localStream = camStream;
+      };
+
+    } catch (error) {
+      console.error('Error sharing screen:', error);
+      alert('Screen sharing failed or was denied.');
+    }
+  });
+</script>
+
+</body>
+</html>

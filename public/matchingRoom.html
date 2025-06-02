@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Room | Tutor IT</title>
+    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* RESET AND OVERRIDE STYLES */
+        body, html {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        section {
+            min-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            position: relative !important;
+        }
+        
+        /* Updated Header Navigation Styles */
+        header .navigation {
+            display: flex !important;
+            gap: 15px !important;
+            margin-right: 50px !important;
+        }
+
+        .nav-pill {
+            color: #7f6b2f !important;
+            background: #FAF0E6 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            letter-spacing: 1px !important;
+            padding: 12px 25px !important;
+            border-radius: 25px !important;
+            font-size: 16px !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid transparent !important;
+        }
+
+        .nav-pill:hover {
+            background-color: #e6d7c3 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .nav-pill.active {
+            background-color: #d4b688 !important;
+            color: #2b2512 !important;
+            border: 2px solid #7f6b2f !important;
+            font-weight: 600 !important;
+        }
+
+        /* Remove old navigation styles */
+        header .navigation a:not(.nav-pill) {
+            display: none !important;
+        }
+        
+        /* CENTERING STYLES */
+        .content {
+            flex: 1 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* MATCHING ROOM STYLES */
+        .matching-room-container {
+            width: 90% !important;
+            max-width: 900px !important;
+            background: #d4b688 !important;
+            padding: 40px !important;
+            border-radius: 20px !important;
+            border: 1px solid #7f6b2f !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+            margin: 0 auto !important;
+            box-sizing: border-box !important;
+        }
+        
+        .matching-title {
+            font-size: 28px !important;
+            color: #2b2512 !important;
+            margin-bottom: 30px !important;
+            text-align: center !important;
+            font-weight: bold !important;
+        }
+        
+        .matching-columns {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 40px !important;
+            margin-bottom: 30px !important;
+        }
+        
+        .matching-column {
+            flex: 1 !important;
+            max-width: 400px !important;
+            padding: 20px !important;
+        }
+        
+        .column-title {
+            font-size: 22px !important;
+            color: #5a4a2a !important;
+            margin-bottom: 20px !important;
+            padding-bottom: 5px !important;
+            border-bottom: 2px solid #7f6b2f !important;
+            text-align: center !important;
+        }
+        
+        .subject-list {
+            list-style-type: none !important;
+            padding: 0 !important;
+        }
+        
+        .subject-item {
+            padding: 15px !important;
+            margin-bottom: 15px !important;
+            background: #f0e6d2 !important;
+            border-radius: 8px !important;
+            color: #2b2512 !important;
+            font-weight: 500 !important;
+            position: relative !important;
+            text-align: center !important;
+        }
+        
+        .edit-link {
+            position: absolute !important;
+            right: 15px !important;
+            color: #7f6b2f !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+        }
+        
+        .edit-link:hover {
+            text-decoration: underline !important;
+        }
+        
+        .divider {
+            width: 2px !important;
+            background: #7f6b2f !important;
+        }
+        
+        .profile-section {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 60px !important;
+            margin: 30px 0 !important;
+        }
+        
+        .profile-circle {
+            width: 140px !important;
+            height: 140px !important;
+            border-radius: 50% !important;
+            background: #f0e6d2 !important;
+            border: 5px solid #7f6b2f !important;
+            overflow: hidden !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #5a4a2a !important;
+            font-weight: bold !important;
+            font-size: 18px !important;
+        }
+        
+        .profile-circle img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+        
+        .matching-button-container {
+            text-align: center !important;
+            margin-top: 30px !important;
+        }
+        
+        .matching-button {
+            background-color: #7f6b2f !important;
+            color: white !important;
+            font-size: 20px !important;
+            padding: 15px 50px !important;
+            border-radius: 50px !important;
+            border: none !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+        }
+        
+        .matching-button:hover {
+            background-color: #5a4a2a !important;
+            transform: scale(1.05) !important;
+        }
+        
+        /* Ensure media icons stay at bottom */
+        .media-icons {
+            margin-top: auto !important;
+            width: 100% !important;
+            text-align: center !important;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <h2>
+                <a href="./index.html" class="logo">Tutor IT</a>
+            </h2>
+            <div class="navigation">
+                <a href="./index.html">Home</a>
+                <a href="#">Mata Kuliah</a>
+                <a href="matchingRoom.html">Ruang Belajar</a>
+                <a href="#">Review</a>
+                <a href="quiz.html">Kuis</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="matching-room-container">
+                <div class="matching-title">New Study Session</div>
+                
+                <div class="profile-section">
+                    <div class="profile-circle">You</div>
+                    <div class="profile-circle">Partner</div>
+                </div>
+                
+                <div class="matching-columns">
+                    <div class="matching-column">
+                        <div class="column-title">Target</div>
+                        <ul class="subject-list">
+                            <li class="subject-item">
+                                Object Oriented Programming
+                                <a href="#" class="edit-link">Edit</a>
+                            </li>
+                            <li class="subject-item">
+                                Software Engineering
+                                <a href="#" class="edit-link">Edit</a>
+                            </li>
+                            <li class="subject-item">
+                                Computational Biology
+                                <a href="#" class="edit-link">Edit</a>
+                            </li>
+                            <li class="subject-item">
+                                <a href="#" style="color: #7f6b2f; text-decoration: none;">Edit Target</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="matching-column">
+                        <div class="column-title">Expertise</div>
+                        <ul class="subject-list">
+                            <li class="subject-item">
+                                Human and Computer Interaction
+                                <a href="#" class="edit-link">Edit</a>
+                            </li>
+                            <li class="subject-item">
+                                Algorithm and Programming
+                                <a href="#" class="edit-link">Edit</a>
+                            </li>
+                            <li class="subject-item">
+                                Bahasa Indonesia
+                                <a href="#" class="edit-link">Edit</a>
+                            </li>
+                            <li class="subject-item">
+                                <a href="#" style="color: #7f6b2f; text-decoration: none;">Edit Expertise</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="matching-button-container">
+                    <a href="studyroom.html">
+                        <button class="matching-button">Start Matching</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="media-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </section>
+</body>
+</html>
