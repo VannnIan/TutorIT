@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mata Kuliah - TutorIT</title>
+    <meta name="description" content="Select your subjects for collaborative learning on TutorIT.">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="section">
+        <!-- Header -->
+        <header class="header">
+            <a href="./index.html" class="logo">TutorIT</a>
+            <nav class="navigation">
+                <a href="./index.html" class="nav-link">Home</a>
+                <a href="subjects.html" class="nav-link active">Mata Kuliah</a>
+                <a href="matchingRoom.html" class="nav-link">Ruang Belajar</a>
+                <a href="#" class="nav-link">Review</a>
+                <a href="quiz.html" class="nav-link">Kuis</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <div class="container">
+                <div class="card animate-fade-in">
+                    <div class="card-header">
+                        <h1 class="card-title">
+                            <i class="fas fa-book me-2"></i>
+                            Select Your Subjects
+                        </h1>
+                        <p class="card-subtitle">Choose 3 subjects you need help with and 3 subjects you can help with</p>
+                    </div>
+
+                    <form id="subjectsForm" class="space-y-2xl">
+                        <!-- Subjects You Need Help With -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <i class="fas fa-question-circle me-2"></i>
+                                    Subjects You Need Help With
+                                </h2>
+                                <p class="card-subtitle">Select exactly 3 subjects</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                                <div class="form-group">
+                                    <label for="need1" class="form-label">Subject 1</label>
+                                    <select id="need1" name="need1" class="form-input" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="discrete-math">Discrete Mathematics</option>
+                                        <option value="linear-algebra">Linear Algebra</option>
+                                        <option value="basic-statistics">Basic Statistics</option>
+                                        <option value="algorithm-programming">Algorithm and Programming</option>
+                                        <option value="program-design">Program Design Methods</option>
+                                        <option value="indonesian">Indonesian</option>
+                                        <option value="data-structures">Data Structures</option>
+                                        <option value="calculus">Calculus</option>
+                                        <option value="scientific-computing">Scientific Computing</option>
+                                        <option value="hci">Human and Computer Interaction</option>
+                                        <option value="algorithm-design">Algorithm Design and Analysis</option>
+                                        <option value="computer-networks">Computer Networks</option>
+                                        <option value="computational-physics">Computational Physics</option>
+                                        <option value="database-technology">Database Technology</option>
+                                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                                        <option value="oop">Object Oriented Programming</option>
+                                        <option value="computational-biology">Computational Biology</option>
+                                        <option value="software-engineering">Software Engineering</option>
+                                        <option value="database-design">Database Design</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="need2" class="form-label">Subject 2</label>
+                                    <select id="need2" name="need2" class="form-input" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="discrete-math">Discrete Mathematics</option>
+                                        <option value="linear-algebra">Linear Algebra</option>
+                                        <option value="basic-statistics">Basic Statistics</option>
+                                        <option value="algorithm-programming">Algorithm and Programming</option>
+                                        <option value="program-design">Program Design Methods</option>
+                                        <option value="indonesian">Indonesian</option>
+                                        <option value="data-structures">Data Structures</option>
+                                        <option value="calculus">Calculus</option>
+                                        <option value="scientific-computing">Scientific Computing</option>
+                                        <option value="hci">Human and Computer Interaction</option>
+                                        <option value="algorithm-design">Algorithm Design and Analysis</option>
+                                        <option value="computer-networks">Computer Networks</option>
+                                        <option value="computational-physics">Computational Physics</option>
+                                        <option value="database-technology">Database Technology</option>
+                                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                                        <option value="oop">Object Oriented Programming</option>
+                                        <option value="computational-biology">Computational Biology</option>
+                                        <option value="software-engineering">Software Engineering</option>
+                                        <option value="database-design">Database Design</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="need3" class="form-label">Subject 3</label>
+                                    <select id="need3" name="need3" class="form-input" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="discrete-math">Discrete Mathematics</option>
+                                        <option value="linear-algebra">Linear Algebra</option>
+                                        <option value="basic-statistics">Basic Statistics</option>
+                                        <option value="algorithm-programming">Algorithm and Programming</option>
+                                        <option value="program-design">Program Design Methods</option>
+                                        <option value="indonesian">Indonesian</option>
+                                        <option value="data-structures">Data Structures</option>
+                                        <option value="calculus">Calculus</option>
+                                        <option value="scientific-computing">Scientific Computing</option>
+                                        <option value="hci">Human and Computer Interaction</option>
+                                        <option value="algorithm-design">Algorithm Design and Analysis</option>
+                                        <option value="computer-networks">Computer Networks</option>
+                                        <option value="computational-physics">Computational Physics</option>
+                                        <option value="database-technology">Database Technology</option>
+                                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                                        <option value="oop">Object Oriented Programming</option>
+                                        <option value="computational-biology">Computational Biology</option>
+                                        <option value="software-engineering">Software Engineering</option>
+                                        <option value="database-design">Database Design</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subjects You Can Help With -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <i class="fas fa-lightbulb me-2"></i>
+                                    Subjects You Can Help With
+                                </h2>
+                                <p class="card-subtitle">Select exactly 3 subjects</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                                <div class="form-group">
+                                    <label for="help1" class="form-label">Subject 1</label>
+                                    <select id="help1" name="help1" class="form-input" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="discrete-math">Discrete Mathematics</option>
+                                        <option value="linear-algebra">Linear Algebra</option>
+                                        <option value="basic-statistics">Basic Statistics</option>
+                                        <option value="algorithm-programming">Algorithm and Programming</option>
+                                        <option value="program-design">Program Design Methods</option>
+                                        <option value="indonesian">Indonesian</option>
+                                        <option value="data-structures">Data Structures</option>
+                                        <option value="calculus">Calculus</option>
+                                        <option value="scientific-computing">Scientific Computing</option>
+                                        <option value="hci">Human and Computer Interaction</option>
+                                        <option value="algorithm-design">Algorithm Design and Analysis</option>
+                                        <option value="computer-networks">Computer Networks</option>
+                                        <option value="computational-physics">Computational Physics</option>
+                                        <option value="database-technology">Database Technology</option>
+                                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                                        <option value="oop">Object Oriented Programming</option>
+                                        <option value="computational-biology">Computational Biology</option>
+                                        <option value="software-engineering">Software Engineering</option>
+                                        <option value="database-design">Database Design</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="help2" class="form-label">Subject 2</label>
+                                    <select id="help2" name="help2" class="form-input" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="discrete-math">Discrete Mathematics</option>
+                                        <option value="linear-algebra">Linear Algebra</option>
+                                        <option value="basic-statistics">Basic Statistics</option>
+                                        <option value="algorithm-programming">Algorithm and Programming</option>
+                                        <option value="program-design">Program Design Methods</option>
+                                        <option value="indonesian">Indonesian</option>
+                                        <option value="data-structures">Data Structures</option>
+                                        <option value="calculus">Calculus</option>
+                                        <option value="scientific-computing">Scientific Computing</option>
+                                        <option value="hci">Human and Computer Interaction</option>
+                                        <option value="algorithm-design">Algorithm Design and Analysis</option>
+                                        <option value="computer-networks">Computer Networks</option>
+                                        <option value="computational-physics">Computational Physics</option>
+                                        <option value="database-technology">Database Technology</option>
+                                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                                        <option value="oop">Object Oriented Programming</option>
+                                        <option value="computational-biology">Computational Biology</option>
+                                        <option value="software-engineering">Software Engineering</option>
+                                        <option value="database-design">Database Design</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="help3" class="form-label">Subject 3</label>
+                                    <select id="help3" name="help3" class="form-input" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="discrete-math">Discrete Mathematics</option>
+                                        <option value="linear-algebra">Linear Algebra</option>
+                                        <option value="basic-statistics">Basic Statistics</option>
+                                        <option value="algorithm-programming">Algorithm and Programming</option>
+                                        <option value="program-design">Program Design Methods</option>
+                                        <option value="indonesian">Indonesian</option>
+                                        <option value="data-structures">Data Structures</option>
+                                        <option value="calculus">Calculus</option>
+                                        <option value="scientific-computing">Scientific Computing</option>
+                                        <option value="hci">Human and Computer Interaction</option>
+                                        <option value="algorithm-design">Algorithm Design and Analysis</option>
+                                        <option value="computer-networks">Computer Networks</option>
+                                        <option value="computational-physics">Computational Physics</option>
+                                        <option value="database-technology">Database Technology</option>
+                                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                                        <option value="oop">Object Oriented Programming</option>
+                                        <option value="computational-biology">Computational Biology</option>
+                                        <option value="software-engineering">Software Engineering</option>
+                                        <option value="database-design">Database Design</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Selected Subjects Summary -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <i class="fas fa-list me-2"></i>
+                                    Your Subject Summary
+                                </h2>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-primary-color mb-md">
+                                        <i class="fas fa-question-circle me-2"></i>
+                                        Need Help With:
+                                    </h3>
+                                    <div id="needSummary" class="space-y-sm">
+                                        <p class="text-muted italic">No subjects selected yet</p>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-lg font-semibold text-primary-color mb-md">
+                                        <i class="fas fa-lightbulb me-2"></i>
+                                        Can Help With:
+                                    </h3>
+                                    <div id="helpSummary" class="space-y-sm">
+                                        <p class="text-muted italic">No subjects selected yet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-lg">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>
+                                Save Subjects
+                            </button>
+                            <a href="matchingRoom.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right me-2"></i>
+                                Continue to Matching
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Subject mapping for display
+        const subjectNames = {
+            'discrete-math': 'Discrete Mathematics',
+            'linear-algebra': 'Linear Algebra',
+            'basic-statistics': 'Basic Statistics',
+            'algorithm-programming': 'Algorithm and Programming',
+            'program-design': 'Program Design Methods',
+            'indonesian': 'Indonesian',
+            'data-structures': 'Data Structures',
+            'calculus': 'Calculus',
+            'scientific-computing': 'Scientific Computing',
+            'hci': 'Human and Computer Interaction',
+            'algorithm-design': 'Algorithm Design and Analysis',
+            'computer-networks': 'Computer Networks',
+            'computational-physics': 'Computational Physics',
+            'database-technology': 'Database Technology',
+            'artificial-intelligence': 'Artificial Intelligence',
+            'oop': 'Object Oriented Programming',
+            'computational-biology': 'Computational Biology',
+            'software-engineering': 'Software Engineering',
+            'database-design': 'Database Design'
+        };
+
+        // Function to update summary
+        function updateSummary() {
+            const needSelects = ['need1', 'need2', 'need3'];
+            const helpSelects = ['help1', 'help2', 'help3'];
+            
+            // Update need summary
+            const needValues = needSelects.map(id => {
+                const select = document.getElementById(id);
+                return select.value ? subjectNames[select.value] : null;
+            }).filter(value => value !== null);
+            
+            const needSummary = document.getElementById('needSummary');
+            if (needValues.length === 0) {
+                needSummary.innerHTML = '<p class="text-muted italic">No subjects selected yet</p>';
+            } else {
+                needSummary.innerHTML = needValues.map(subject => 
+                    `<div class="flex items-center gap-md p-sm bg-primary-lighter rounded-lg">
+                        <i class="fas fa-book text-primary-color"></i>
+                        <span class="font-medium">${subject}</span>
+                    </div>`
+                ).join('');
+            }
+            
+            // Update help summary
+            const helpValues = helpSelects.map(id => {
+                const select = document.getElementById(id);
+                return select.value ? subjectNames[select.value] : null;
+            }).filter(value => value !== null);
+            
+            const helpSummary = document.getElementById('helpSummary');
+            if (helpValues.length === 0) {
+                helpSummary.innerHTML = '<p class="text-muted italic">No subjects selected yet</p>';
+            } else {
+                helpSummary.innerHTML = helpValues.map(subject => 
+                    `<div class="flex items-center gap-md p-sm bg-primary-lighter rounded-lg">
+                        <i class="fas fa-lightbulb text-primary-color"></i>
+                        <span class="font-medium">${subject}</span>
+                    </div>`
+                ).join('');
+            }
+        }
+
+        // Add event listeners to all selects
+        document.addEventListener('DOMContentLoaded', function() {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.addEventListener('change', updateSummary);
+            });
+            
+            // Load previously selected subjects
+            const needSelects = ['need1', 'need2', 'need3'];
+            const helpSelects = ['help1', 'help2', 'help3'];
+            
+            needSelects.forEach((id, index) => {
+                const savedValue = localStorage.getItem(`needSubject${index + 1}`);
+                if (savedValue) {
+                    document.getElementById(id).value = savedValue;
+                }
+            });
+            
+            helpSelects.forEach((id, index) => {
+                const savedValue = localStorage.getItem(`helpSubject${index + 1}`);
+                if (savedValue) {
+                    document.getElementById(id).value = savedValue;
+                }
+            });
+            
+            // Update summary with loaded values
+            updateSummary();
+            
+            // Form submission
+            document.getElementById('subjectsForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const needSelects = ['need1', 'need2', 'need3'];
+                const helpSelects = ['help1', 'help2', 'help3'];
+                
+                const needValues = needSelects.map(id => document.getElementById(id).value).filter(v => v);
+                const helpValues = helpSelects.map(id => document.getElementById(id).value).filter(v => v);
+                
+                // Check for duplicates
+                const needSet = new Set(needValues);
+                const helpSet = new Set(helpValues);
+                
+                if (needValues.length !== 3) {
+                    alert('Please select exactly 3 subjects you need help with.');
+                    return;
+                }
+                
+                if (helpValues.length !== 3) {
+                    alert('Please select exactly 3 subjects you can help with.');
+                    return;
+                }
+                
+                if (needSet.size !== 3) {
+                    alert('Please select 3 different subjects you need help with.');
+                    return;
+                }
+                
+                if (helpSet.size !== 3) {
+                    alert('Please select 3 different subjects you can help with.');
+                    return;
+                }
+                
+                // Check for overlap
+                const overlap = needValues.filter(value => helpValues.includes(value));
+                if (overlap.length > 0) {
+                    alert('You cannot select the same subject for both "need help" and "can help". Please choose different subjects.');
+                    return;
+                }
+                
+                // Save to localStorage
+                needValues.forEach((value, index) => {
+                    localStorage.setItem(`needSubject${index + 1}`, value);
+                });
+                
+                helpValues.forEach((value, index) => {
+                    localStorage.setItem(`helpSubject${index + 1}`, value);
+                });
+                
+                // Success - redirect to matching room
+                alert('Subjects saved successfully! Redirecting to matching room...');
+                window.location.href = 'matchingRoom.html';
+            });
+        });
+    </script>
+</body>
+</html> 

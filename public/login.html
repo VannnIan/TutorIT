@@ -2,51 +2,165 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="./CSS/login.css">
-    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TutorIT</title>
+    <meta name="description" content="Login to your TutorIT account to start collaborative learning.">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section>
-    <header>
-        <h2>
+    <section class="section">
+        <!-- Header -->
+        <header class="header">
             <a href="./index.html" class="logo">TutorIT</a>
-        </h2>
-        <div class="navigation">
-                <a href="./index.html">Home</a>
-                <a href="#">Mata Kuliah</a>
-                <a href="matchingRoom.html">Ruang Belajar</a>
-                <a href="#">Review</a>
-                <a href="quiz.html">Kuis</a>
-            </div>
-         </div>
-    </header>
-    <div class="wrapper">
-        <form action="profile.html" method="get">
-            <h1>Login</h1>
-            <div class="input-box">
-                <input type="text" placeholder="Username">
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="Sandi">
-            </div>
+            <nav class="navigation">
+                <a href="./index.html" class="nav-link">Home</a>
+                <a href="subjects.html" class="nav-link">Mata Kuliah</a>
+                <a href="matchingRoom.html" class="nav-link">Ruang Belajar</a>
+                <a href="#" class="nav-link">Review</a>
+                <a href="quiz.html" class="nav-link">Kuis</a>
+            </nav>
+        </header>
 
-            <div class="remember-me">
-                <label><input type="checkbox">Ingat aku</label>
-                <a href="#">Lupa sandi</a>
-            </div>
-            
-            <button type="submit" class="btn">Login</button>
+        <!-- Main Content -->
+        <main class="content">
+            <div class="container">
+                <div class="card animate-fade-in" style="max-width: 400px; margin: 0 auto;">
+                    <div class="card-header">
+                        <h1 class="card-title">
+                            <i class="fas fa-sign-in-alt mb-sm"></i>
+                            Welcome Back
+                        </h1>
+                        <p class="card-subtitle">Sign in to your account</p>
+                    </div>
 
-            <div class="register">
-                <p>Belum  mempunyai akun? <a href="register.html">
-                    Register
-                </a></p>
+                    <form id="loginForm" class="flex flex-col gap-lg">
+                        <div class="form-group">
+                            <label for="username" class="form-label">
+                                <i class="fas fa-user me-2"></i>Username
+                            </label>
+                            <input 
+                                type="text" 
+                                id="username"
+                                name="username"
+                                class="form-input" 
+                                placeholder="Enter your username"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">
+                                <i class="fas fa-lock me-2"></i>Password
+                            </label>
+                            <input 
+                                type="password" 
+                                id="password"
+                                name="password"
+                                class="form-input" 
+                                placeholder="Enter your password"
+                                required
+                            >
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <label class="flex items-center gap-sm">
+                                <input type="checkbox" name="remember" class="form-checkbox">
+                                <span class="text-sm">Remember me</span>
+                            </label>
+                            <a href="#" class="text-sm text-primary-color hover:underline">Forgot password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full">
+                            <i class="fas fa-sign-in-alt me-2"></i>
+                            Sign In
+                        </button>
+
+                        <div class="text-center">
+                            <p class="text-sm text-muted">
+                                Don't have an account? 
+                                <a href="register.html" class="text-primary-color hover:underline font-medium">
+                                    Sign up here
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
-    </div>
+        </main>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
     </section>
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing In...';
+        submitBtn.disabled = true;
+        
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        
+        if (!username || !password) {
+            alert('Please enter both username and password.');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            return;
+        }
+        
+        try {
+            const res = await fetch('http://localhost:8000/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            
+            const data = await res.json();
+            
+            if (!res.ok) {
+                throw new Error(data.error || data.message || 'Login failed');
+            }
+            
+            // Save user info to localStorage
+            localStorage.setItem('user', JSON.stringify(data.user));
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Show success message
+            alert('Login successful! Redirecting to profile...');
+            window.location.href = 'profile.html';
+            
+        } catch (error) {
+            console.error('Login error:', error);
+            
+            if (error.message.includes('fetch')) {
+                alert('Cannot connect to server. Please make sure the backend is running on http://localhost:8000');
+            } else {
+                alert(error.message);
+            }
+        } finally {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+    </script>
 </body>
 </html>

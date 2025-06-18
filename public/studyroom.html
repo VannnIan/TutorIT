@@ -3,401 +3,802 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Room | Tutor IT</title>
-    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <title>Study Room | TutorIT</title>
+    <meta name="description" content="Join a collaborative study session with other students on TutorIT.">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <style>
-        /* RESET AND OVERRIDE STYLES - More specific to avoid conflicts */
-        body, html {
-            height: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        
-        section {
-            min-height: 100vh !important;
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100% !important;
-            position: relative !important;
-        }
-        
-        /* Override any existing content styles */
-        .content {
-            flex: 1 !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 auto !important;
-            padding: 20px !important;
-            box-sizing: border-box !important;
-        }
-        
-        /* Override info styles to ensure centering */
-        .info {
-            width: 100% !important;
-            max-width: 1000px !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            margin: 0 auto !important;
-        }
-        
-        /* Make sure the heading is centered */
-        .info h2 {
-            width: 100% !important;
-            text-align: center !important;
-            margin-bottom: 30px !important;
-        }
-        
-        /* Ensure the container is centered */
-        .study-room-container {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            width: 90% !important;
-            max-width: 900px !important;
-            margin: 0 auto !important;
-            background: #d4b688 !important;
-            padding: 40px !important;
-            border-radius: 20px !important;
-            border: 1px solid #7f6b2f !important;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-            box-sizing: border-box !important;
-        }
-        
-        /* Menu items styling */
-        .menu-items {
-            display: flex !important;
-            justify-content: space-around !important;
-            width: 100% !important;
-            margin-bottom: 40px !important;
-        }
-        
-        .menu-item {
-            color: #2b2512 !important;
-            font-size: 24px !important;
-            font-weight: bold !important;
-            text-decoration: none !important;
-            padding: 10px 20px !important;
-            border-bottom: 3px solid transparent !important;
-            transition: all 0.3s !important;
-        }
-        
-        .menu-item:hover, .menu-item.active {
-            border-bottom: 3px solid #7f6b2f !important;
-            color: #5a4a2a !important;
-        }
-        
-        /* Video container - ensure this is centered */
         .video-container {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 60px !important;
-            margin: 30px 0 !important;
-            width: 100% !important;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
         }
         
-        .profile-circle {
-            width: 150px !important;
-            height: 150px !important;
-            border-radius: 50% !important;
-            background: #f0e6d2 !important;
-            border: 5px solid #7f6b2f !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            color: #5a4a2a !important;
-            font-weight: bold !important;
-            font-size: 18px !important;
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
-        .call-controls {
-            display: flex !important;
-            justify-content: center !important;
-            gap: 30px !important;
-            margin-top: 30px !important;
-            width: 100% !important;
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1rem;
         }
         
-        .control-btn {
-            width: 60px !important;
-            height: 60px !important;
-            border-radius: 50% !important;
-            background: #7f6b2f !important;
-            color: white !important;
-            border: none !important;
-            font-size: 20px !important;
-            cursor: pointer !important;
-            transition: all 0.3s !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+        .connection-status {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
         }
         
-        .control-btn:hover {
-            background: #5a4a2a !important;
-            transform: scale(1.1) !important;
+        .status-connecting {
+            background: #fbbf24;
+            color: #92400e;
         }
         
-        .control-btn.end-call {
-            background: #c0392b !important;
+        .status-connected {
+            background: #10b981;
+            color: white;
         }
         
-        .control-btn.end-call:hover {
-            background: #962d22 !important;
+        .status-disconnected {
+            background: #ef4444;
+            color: white;
         }
         
-        .logo-title {
-            font-size: 32px !important;
-            color: #2b2512 !important;
-            text-align: center !important;
-            margin-bottom: 30px !important;
-            font-weight: bold !important;
+        .btn-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+            background: var(--primary-lighter);
+            color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         
-        /* Ensure media icons stay at bottom */
-        .media-icons {
-            margin-top: auto !important;
-            width: 100% !important;
-            text-align: center !important;
+        .btn-icon.inactive {
+            background: var(--primary-lighter);
+            color: var(--primary-color);
         }
-
-        /* Updated Header Navigation Styles */
-        header .navigation {
-            display: flex !important;
-            gap: 15px !important;
-            margin-right: 50px !important;
+        
+        .btn-icon.active {
+            background: var(--primary-color);
+            color: #fff;
         }
-
-        .nav-pill {
-            color: #7f6b2f !important;
-            background: #FAF0E6 !important;
-            text-decoration: none !important;
-            font-weight: 500 !important;
-            letter-spacing: 1px !important;
-            padding: 12px 25px !important;
-            border-radius: 25px !important;
-            font-size: 16px !important;
-            transition: all 0.3s ease !important;
-            border: 2px solid transparent !important;
+        
+        .btn-icon.danger {
+            background: #ef4444;
+            color: #fff;
         }
-
-        .nav-pill:hover {
-            background-color: #e6d7c3 !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+        
+        .btn-icon:hover {
+            transform: scale(1.1);
+            filter: brightness(1.1);
         }
-
-        .nav-pill.active {
-            background-color: #d4b688 !important;
-            color: #2b2512 !important;
-            border: 2px solid #7f6b2f !important;
-            font-weight: 600 !important;
+        
+        .matchmaking-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
         }
-
-        /* Remove old navigation styles */
-        header .navigation a:not(.nav-pill) {
+        
+        .matchmaking-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden {
             display: none !important;
         }
     </style>
 </head>
 <body>
-    <section>
-        <header>
-            <h2>
-                <a href="./index.html" class="logo">Tutor IT</a>
-            </h2>
-            <div class="navigation">
-                <a href="./index.html">Home</a>
-                <a href="#">Mata Kuliah</a>
-                <a href="matchingRoom.html">Ruang Belajar</a>
-                <a href="#">Review</a>
-                <a href="quiz.html">Kuis</a>
-            </div>
+    <section class="section">
+        <!-- Header -->
+        <header class="header">
+            <a href="./index.html" class="logo">TutorIT</a>
+            <nav class="navigation">
+                <a href="./index.html" class="nav-link">Home</a>
+                <a href="subjects.html" class="nav-link">Mata Kuliah</a>
+                <a href="matchingRoom.html" class="nav-link active">Ruang Belajar</a>
+                <a href="#" class="nav-link">Review</a>
+                <a href="quiz.html" class="nav-link">Kuis</a>
+            </nav>
         </header>
 
-        <div class="content">
-            <div class="info">
-                <h2>Study Room <span>@angelica_ragnivar</span></h2>
-                
-                <div class="study-room-container">
-                    <div class="logo-title">Tutor IT</div>
-                    
-                    <div class="menu-items">
-                        <a href="#" class="menu-item active">HomePage</a>
-                        <a href="#" class="menu-item">Subject</a>
-                        <a href="#" class="menu-item">Study Room</a>
-                        <a href="#" class="menu-item">Review</a>
-                    </div>
-                    
-                    <div class="video-container">
-                        <div class="profile-circle">You</div>
-                        <div class="profile-circle">Partner</div>
-                    </div>
-                    
-                    <div class="call-controls">
-                        <button class="control-btn" title="Share Screen">
-                            <i class="fas fa-desktop"></i>
-                        </button>
-                        <button class="control-btn" title="Camera">
-                            <i class="fas fa-video"></i>
-                        </button>
-                        <button class="control-btn" title="Microphone">
-                            <i class="fas fa-microphone"></i>
-                        </button>
-                        <button class="control-btn end-call" title="End Call" onclick="window.location.href='matchingRoom.html'">
-                            <i class="fas fa-phone-slash"></i>
-                        </button>
+        <!-- Matchmaking Overlay -->
+        <div id="matchmakingOverlay" class="matchmaking-overlay">
+            <div class="matchmaking-card">
+                <div class="spinner"></div>
+                <h2 class="text-xl font-semibold mb-md">Finding Study Partner...</h2>
+                <p class="text-muted mb-lg">We're matching you with someone who can help with your subjects</p>
+                <button id="cancelMatchmaking" class="btn btn-secondary">
+                    <i class="fas fa-times me-2"></i>
+                    Cancel
+                </button>
+            </div>
+        </div>
 
+        <!-- Main Content -->
+        <main class="content">
+            <div class="container">
+                <div class="card animate-fade-in">
+                    <div class="card-header">
+                        <h1 class="card-title">
+                            <i class="fas fa-video me-2"></i>
+                            Study Room
+                        </h1>
+                        <p class="card-subtitle">Collaborative learning session in progress</p>
+                    </div>
+
+                    <!-- Connection Status -->
+                    <div id="connectionStatus" class="connection-status status-connecting hidden">
+                        <i class="fas fa-circle me-2"></i>
+                        <span id="statusText">Connecting...</span>
+                    </div>
+
+                    <!-- Navigation Menu -->
+                    <nav class="flex justify-center mb-2xl">
+                        <div class="flex gap-lg">
+                            <a href="#" class="nav-link active" data-tab="video">Video Call</a>
+                            <a href="#" class="nav-link" data-tab="chat">Chat</a>
+                            <a href="#" class="nav-link" data-tab="whiteboard">Whiteboard</a>
+                            <a href="#" class="nav-link" data-tab="notes">Notes</a>
+                        </div>
+                    </nav>
+
+                    <!-- Video Call Tab -->
+                    <div id="videoTab" class="tab-content">
+                        <!-- Video Container -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl mb-2xl">
+                            <!-- Local Video -->
+                            <div class="video-container h-80">
+                                <video id="localVideo" autoplay muted playsinline></video>
+                                <div class="video-overlay">
+                                    <p class="font-medium">You</p>
+                                </div>
+                            </div>
+
+                            <!-- Remote Video -->
+                            <div class="video-container h-80">
+                                <video id="remoteVideo" autoplay playsinline></video>
+                                <div class="video-overlay">
+                                    <p class="font-medium">Study Partner</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Call Controls -->
+                        <div class="flex justify-center gap-xl mb-2xl">
+                            <button id="muteBtn" class="btn-icon inactive" title="Mute">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button id="videoBtn" class="btn-icon inactive" title="Turn off camera">
+                                <i class="fas fa-video"></i>
+                            </button>
+                            <button id="screenShareBtn" class="btn-icon inactive" title="Share screen">
+                                <i class="fas fa-desktop"></i>
+                            </button>
+                            <button id="endCallBtn" class="btn-icon danger" title="End call">
+                                <i class="fas fa-phone-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Tab -->
+                    <div id="chatTab" class="tab-content hidden">
+                        <div class="h-96 bg-gray-50 rounded-lg p-lg mb-lg">
+                            <div id="chatMessages" class="h-full overflow-y-auto space-y-md">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-comments text-2xl mb-md"></i>
+                                    <p>No messages yet. Start the conversation!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-md">
+                            <input type="text" id="chatInput" class="form-input flex-1" placeholder="Type your message...">
+                            <button id="sendMessageBtn" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Whiteboard Tab -->
+                    <div id="whiteboardTab" class="tab-content hidden">
+                        <div class="h-96 bg-white border-2 border-gray-300 rounded-lg mb-lg">
+                            <canvas id="whiteboardCanvas" width="800" height="400" style="width: 100%; height: 100%; cursor: crosshair;"></canvas>
+                        </div>
+                        <div class="flex justify-center gap-lg">
+                            <button id="clearCanvasBtn" class="btn btn-secondary">
+                                <i class="fas fa-eraser me-2"></i>
+                                Clear
+                            </button>
+                            <input type="color" id="colorPicker" value="#000000" class="w-12 h-10 border rounded">
+                            <input type="range" id="brushSize" min="1" max="20" value="5" class="w-32">
+                        </div>
+                    </div>
+
+                    <!-- Notes Tab -->
+                    <div id="notesTab" class="tab-content hidden">
+                        <textarea id="notesTextarea" class="form-input h-96" placeholder="Take notes during your study session..."></textarea>
+                        <div class="flex justify-between items-center mt-lg">
+                            <button id="saveNotesBtn" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>
+                                Save Notes
+                            </button>
+                            <span id="notesStatus" class="text-sm text-muted">Auto-saved</span>
+                        </div>
+                    </div>
+
+                    <!-- Session Info -->
+                    <div class="mt-2xl p-lg bg-primary-lighter rounded-lg">
+                        <h3 class="text-xl font-semibold mb-md text-primary-color">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Session Information
+                        </h3>
+                        <div class="grid grid-cols-2 gap-lg text-sm">
+                            <div>
+                                <p class="font-medium text-primary-color">Subject:</p>
+                                <p id="sessionSubject" class="text-muted">Loading...</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-primary-color">Partner:</p>
+                                <p id="sessionPartner" class="text-muted">Finding match...</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-primary-color">Duration:</p>
+                                <p id="sessionDuration" class="text-muted">00:00</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-primary-color">Connection:</p>
+                                <p id="sessionConnection" class="text-muted">Establishing...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
 
-        <div class="media-icons">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
     </section>
- <script src="/socket.io/socket.io.js"></script>
-<script>
-  const socket = io();
-  let peerConnection;
-  let localStream;
-  let remoteStream;
-  const config = {
-    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
-  };
 
-  // Join matchmaking queue
-  socket.emit('join-waiting-room');
+    <script>
+        // WebRTC Configuration
+        const configuration = {
+            iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' },
+                { urls: 'stun:stun1.l.google.com:19302' }
+            ]
+        };
 
-  // Step 1: Get media (video/audio)
-  navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-    .then(stream => {
-      localStream = stream;
-      document.querySelectorAll('.profile-circle')[0].innerHTML = '';
-      const video = document.createElement('video');
-      video.srcObject = stream;
-      video.autoplay = true;
-      video.muted = true;
-      video.playsInline = true;
-      video.style.borderRadius = "50%";
-      video.style.width = "150px";
-      video.style.height = "150px";
-      document.querySelectorAll('.profile-circle')[0].appendChild(video);
-    });
+        // Global variables
+        let localStream = null;
+        let remoteStream = null;
+        let peerConnection = null;
+        let isMuted = false;
+        let isVideoOff = false;
+        let isScreenSharing = false;
+        let sessionStartTime = null;
+        let matchmakingInterval = null;
+        let sessionTimer = null;
 
-  // Matched with another user
-  socket.on('matched', ({ otherUserId }) => {
-    startCall(otherUserId);
-  });
+        // DOM elements
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const muteBtn = document.getElementById('muteBtn');
+        const videoBtn = document.getElementById('videoBtn');
+        const screenShareBtn = document.getElementById('screenShareBtn');
+        const endCallBtn = document.getElementById('endCallBtn');
+        const matchmakingOverlay = document.getElementById('matchmakingOverlay');
+        const cancelMatchmakingBtn = document.getElementById('cancelMatchmaking');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const statusText = document.getElementById('statusText');
 
-  socket.on('offer', async ({ sdp, socketId }) => {
-    peerConnection = createPeerConnection(socketId);
-    localStream.getTracks().forEach(track => {
-      peerConnection.addTrack(track, localStream);
-    });
-    await peerConnection.setRemoteDescription(new RTCSessionDescription(sdp));
-    const answer = await peerConnection.createAnswer();
-    await peerConnection.setLocalDescription(answer);
-    socket.emit('answer', { target: socketId, sdp: answer });
-  });
+        // Tab functionality
+        document.querySelectorAll('[data-tab]').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabName = tab.getAttribute('data-tab');
+                document.getElementById(tabName + 'Tab').classList.remove('hidden');
+            });
+        });
 
-  socket.on('answer', ({ sdp }) => {
-    peerConnection.setRemoteDescription(new RTCSessionDescription(sdp));
-  });
-
-  socket.on('ice-candidate', ({ candidate }) => {
-    if (candidate && peerConnection) {
-      peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
-    }
-  });
-
-  function createPeerConnection(targetId) {
-    const pc = new RTCPeerConnection(config);
-    pc.onicecandidate = e => {
-      if (e.candidate) {
-        socket.emit('ice-candidate', { target: targetId, candidate: e.candidate });
-      }
-    };
-    pc.ontrack = e => {
-      if (!remoteStream) {
-        remoteStream = new MediaStream();
-        const video = document.createElement('video');
-        video.srcObject = remoteStream;
-        video.autoplay = true;
-        video.playsInline = true;
-        video.style.borderRadius = "50%";
-        video.style.width = "150px";
-        video.style.height = "150px";
-        document.querySelectorAll('.profile-circle')[1].innerHTML = '';
-        document.querySelectorAll('.profile-circle')[1].appendChild(video);
-      }
-      remoteStream.addTrack(e.track);
-    };
-    return pc;
-  }
-
-  async function startCall(otherUserId) {
-    peerConnection = createPeerConnection(otherUserId);
-    localStream.getTracks().forEach(track => {
-      peerConnection.addTrack(track, localStream);
-    });
-    const offer = await peerConnection.createOffer();
-    await peerConnection.setLocalDescription(offer);
-    socket.emit('offer', { target: otherUserId, sdp: offer });
-  }
-</script>
-<script>
-  const shareScreenBtn = document.querySelector('.control-btn[title="Share Screen"]');
-
-  shareScreenBtn.addEventListener('click', async () => {
-    try {
-      const screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
-
-      const screenTrack = screenStream.getVideoTracks()[0];
-
-      // Replace the existing video track in the peer connection
-      const sender = peerConnection.getSenders().find(s => s.track.kind === 'video');
-      if (sender) {
-        sender.replaceTrack(screenTrack);
-      }
-
-      // Show screen locally too
-      const localVideo = document.querySelectorAll('.profile-circle')[0].querySelector('video');
-      if (localVideo) {
-        localVideo.srcObject = screenStream;
-      }
-
-      // When user stops sharing, revert to webcam
-      screenTrack.onended = async () => {
-        const camStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-        const camTrack = camStream.getVideoTracks()[0];
-        const newSender = peerConnection.getSenders().find(s => s.track.kind === 'video');
-        if (newSender) {
-          newSender.replaceTrack(camTrack);
+        // Initialize WebRTC
+        async function initializeWebRTC() {
+            try {
+                // Get user media
+                localStream = await navigator.mediaDevices.getUserMedia({
+                    video: true,
+                    audio: true
+                });
+                
+                localVideo.srcObject = localStream;
+                
+                // Create peer connection
+                peerConnection = new RTCPeerConnection(configuration);
+                
+                // Add local stream to peer connection
+                localStream.getTracks().forEach(track => {
+                    peerConnection.addTrack(track, localStream);
+                });
+                
+                // Handle remote stream
+                peerConnection.ontrack = (event) => {
+                    remoteStream = event.streams[0];
+                    remoteVideo.srcObject = remoteStream;
+                };
+                
+                // Handle connection state changes
+                peerConnection.onconnectionstatechange = () => {
+                    updateConnectionStatus();
+                };
+                
+                // Handle ICE candidates
+                peerConnection.onicecandidate = (event) => {
+                    if (event.candidate) {
+                        // Send candidate to remote peer (in real app, this would go through signaling server)
+                        console.log('ICE candidate:', event.candidate);
+                    }
+                };
+                
+                updateConnectionStatus();
+                
+            } catch (error) {
+                console.error('Error accessing media devices:', error);
+                alert('Unable to access camera/microphone. Please check permissions.');
+            }
         }
 
-        if (localVideo) {
-          localVideo.srcObject = camStream;
+        // Update connection status
+        function updateConnectionStatus() {
+            if (!peerConnection) {
+                connectionStatus.className = 'connection-status status-disconnected';
+                statusText.textContent = 'Disconnected';
+                return;
+            }
+            
+            const state = peerConnection.connectionState;
+            connectionStatus.classList.remove('hidden');
+            
+            switch (state) {
+                case 'new':
+                    connectionStatus.className = 'connection-status status-connecting';
+                    statusText.textContent = 'Initializing...';
+                    break;
+                case 'connecting':
+                    connectionStatus.className = 'connection-status status-connecting';
+                    statusText.textContent = 'Connecting...';
+                    break;
+                case 'connected':
+                    connectionStatus.className = 'connection-status status-connected';
+                    statusText.textContent = 'Connected';
+                    break;
+                case 'disconnected':
+                    connectionStatus.className = 'connection-status status-disconnected';
+                    statusText.textContent = 'Disconnected';
+                    break;
+                case 'failed':
+                    connectionStatus.className = 'connection-status status-disconnected';
+                    statusText.textContent = 'Connection Failed';
+                    break;
+                case 'closed':
+                    connectionStatus.className = 'connection-status status-disconnected';
+                    statusText.textContent = 'Connection Closed';
+                    break;
+            }
         }
 
-        // Update localStream for future use
-        localStream = camStream;
-      };
+        // Mute/Unmute functionality
+        muteBtn.addEventListener('click', () => {
+            if (localStream) {
+                const audioTrack = localStream.getAudioTracks()[0];
+                if (audioTrack) {
+                    audioTrack.enabled = !audioTrack.enabled;
+                    isMuted = !audioTrack.enabled;
+                    muteBtn.className = isMuted ? 'btn-icon active' : 'btn-icon inactive';
+                    muteBtn.innerHTML = isMuted ? '<i class="fas fa-microphone-slash"></i>' : '<i class="fas fa-microphone"></i>';
+                }
+            }
+        });
 
-    } catch (error) {
-      console.error('Error sharing screen:', error);
-      alert('Screen sharing failed or was denied.');
-    }
-  });
-</script>
+        // Video on/off functionality
+        videoBtn.addEventListener('click', () => {
+            if (localStream) {
+                const videoTrack = localStream.getVideoTracks()[0];
+                if (videoTrack) {
+                    videoTrack.enabled = !videoTrack.enabled;
+                    isVideoOff = !videoTrack.enabled;
+                    videoBtn.className = isVideoOff ? 'btn-icon active' : 'btn-icon inactive';
+                    videoBtn.innerHTML = isVideoOff ? '<i class="fas fa-video-slash"></i>' : '<i class="fas fa-video"></i>';
+                }
+            }
+        });
 
+        // Screen sharing functionality
+        screenShareBtn.addEventListener('click', async () => {
+            try {
+                if (!isScreenSharing) {
+                    const screenStream = await navigator.mediaDevices.getDisplayMedia({
+                        video: true,
+                        audio: false
+                    });
+                    
+                    const videoTrack = screenStream.getVideoTracks()[0];
+                    const sender = peerConnection.getSenders().find(s => s.track?.kind === 'video');
+                    
+                    if (sender) {
+                        sender.replaceTrack(videoTrack);
+                    }
+                    
+                    isScreenSharing = true;
+                    screenShareBtn.className = 'btn-icon active';
+                    screenShareBtn.innerHTML = '<i class="fas fa-stop"></i>';
+                    
+                    // Stop screen sharing when user stops
+                    videoTrack.onended = () => {
+                        stopScreenSharing();
+                    };
+                } else {
+                    stopScreenSharing();
+                }
+            } catch (error) {
+                console.error('Error sharing screen:', error);
+                alert('Unable to share screen. Please try again.');
+            }
+        });
+
+        function stopScreenSharing() {
+            if (localStream) {
+                const videoTrack = localStream.getVideoTracks()[0];
+                const sender = peerConnection.getSenders().find(s => s.track?.kind === 'video');
+                
+                if (sender && videoTrack) {
+                    sender.replaceTrack(videoTrack);
+                }
+            }
+            
+            isScreenSharing = false;
+            screenShareBtn.className = 'btn-icon inactive';
+            screenShareBtn.innerHTML = '<i class="fas fa-desktop"></i>';
+        }
+
+        // End call functionality
+        endCallBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to end the call?')) {
+                endCall();
+            }
+        });
+
+        function endCall() {
+            // Stop all tracks
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+            }
+            
+            // Close peer connection
+            if (peerConnection) {
+                peerConnection.close();
+            }
+            
+            // Clear video elements
+            localVideo.srcObject = null;
+            remoteVideo.srcObject = null;
+            
+            // Reset UI
+            matchmakingOverlay.classList.remove('hidden');
+            connectionStatus.classList.add('hidden');
+            
+            // Redirect to matching room
+            setTimeout(() => {
+                window.location.href = 'matchingRoom.html';
+            }, 2000);
+        }
+
+        // Matchmaking simulation
+        function startMatchmaking() {
+            matchmakingOverlay.classList.remove('hidden');
+            connectionStatus.classList.add('hidden');
+            
+            // Simulate matchmaking process
+            let progress = 0;
+            matchmakingInterval = setInterval(() => {
+                progress += Math.random() * 15;
+                
+                if (progress >= 100) {
+                    clearInterval(matchmakingInterval);
+                    matchmakingOverlay.classList.add('hidden');
+                    connectionStatus.classList.remove('hidden');
+                    
+                    // Initialize WebRTC
+                    initializeWebRTC();
+                    
+                    // Start session timer
+                    startSessionTimer();
+                    
+                    // Update session info
+                    updateSessionInfo();
+                }
+            }, 1000);
+        }
+
+        // Cancel matchmaking
+        cancelMatchmakingBtn.addEventListener('click', () => {
+            if (matchmakingInterval) {
+                clearInterval(matchmakingInterval);
+            }
+            window.location.href = 'matchingRoom.html';
+        });
+
+        // Session timer
+        function startSessionTimer() {
+            sessionStartTime = Date.now();
+            sessionTimer = setInterval(() => {
+                const elapsed = Date.now() - sessionStartTime;
+                const minutes = Math.floor(elapsed / 60000);
+                const seconds = Math.floor((elapsed % 60000) / 1000);
+                document.getElementById('sessionDuration').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Update session information
+        function updateSessionInfo() {
+            // Load user's subjects from localStorage
+            const needSubjects = [
+                localStorage.getItem('needSubject1'),
+                localStorage.getItem('needSubject2'),
+                localStorage.getItem('needSubject3')
+            ].filter(subject => subject && subject !== 'null');
+            
+            const helpSubjects = [
+                localStorage.getItem('helpSubject1'),
+                localStorage.getItem('helpSubject2'),
+                localStorage.getItem('helpSubject3')
+            ].filter(subject => subject && subject !== 'null');
+            
+            // Subject mapping
+            const subjectNames = {
+                'discrete-math': 'Discrete Mathematics',
+                'linear-algebra': 'Linear Algebra',
+                'basic-statistics': 'Basic Statistics',
+                'algorithm-programming': 'Algorithm and Programming',
+                'program-design': 'Program Design Methods',
+                'indonesian': 'Indonesian',
+                'data-structures': 'Data Structures',
+                'calculus': 'Calculus',
+                'scientific-computing': 'Scientific Computing',
+                'hci': 'Human and Computer Interaction',
+                'algorithm-design': 'Algorithm Design and Analysis',
+                'computer-networks': 'Computer Networks',
+                'computational-physics': 'Computational Physics',
+                'database-technology': 'Database Technology',
+                'artificial-intelligence': 'Artificial Intelligence',
+                'oop': 'Object Oriented Programming',
+                'computational-biology': 'Computational Biology',
+                'software-engineering': 'Software Engineering',
+                'database-design': 'Database Design'
+            };
+            
+            // Display first subject as session subject
+            if (needSubjects.length > 0) {
+                const subjectKey = needSubjects[0];
+                document.getElementById('sessionSubject').textContent = subjectNames[subjectKey] || subjectKey;
+            } else {
+                document.getElementById('sessionSubject').textContent = 'Not specified';
+            }
+            
+            document.getElementById('sessionPartner').textContent = 'Study Partner';
+            document.getElementById('sessionConnection').textContent = 'WebRTC';
+        }
+
+        // Whiteboard functionality
+        const canvas = document.getElementById('whiteboardCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        function startDrawing(e) {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = document.getElementById('colorPicker').value;
+            ctx.lineWidth = document.getElementById('brushSize').value;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        document.getElementById('clearCanvasBtn').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        // Chat functionality
+        document.getElementById('sendMessageBtn').addEventListener('click', sendMessage);
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage('You', message);
+                input.value = '';
+                
+                // Simulate partner response
+                setTimeout(() => {
+                    const responses = [
+                        'That\'s a great question!',
+                        'I understand what you mean.',
+                        'Let me explain that...',
+                        'Do you want to work on this together?',
+                        'I think we should focus on this part.'
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage('Study Partner', randomResponse);
+                }, 1000 + Math.random() * 2000);
+            }
+        }
+
+        function addMessage(sender, message) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'p-md bg-white rounded-lg border';
+            messageDiv.innerHTML = `
+                <p class="font-medium text-primary-color">${sender}</p>
+                <p class="text-sm">${message}</p>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Notes functionality
+        const notesTextarea = document.getElementById('notesTextarea');
+        const notesStatus = document.getElementById('notesStatus');
+
+        notesTextarea.addEventListener('input', () => {
+            notesStatus.textContent = 'Saving...';
+            clearTimeout(notesTextarea.saveTimeout);
+            notesTextarea.saveTimeout = setTimeout(() => {
+                localStorage.setItem('studyNotes', notesTextarea.value);
+                notesStatus.textContent = 'Auto-saved';
+            }, 1000);
+        });
+
+        document.getElementById('saveNotesBtn').addEventListener('click', () => {
+            localStorage.setItem('studyNotes', notesTextarea.value);
+            notesStatus.textContent = 'Saved!';
+            setTimeout(() => {
+                notesStatus.textContent = 'Auto-saved';
+            }, 2000);
+        });
+
+        // Load saved notes
+        const savedNotes = localStorage.getItem('studyNotes');
+        if (savedNotes) {
+            notesTextarea.value = savedNotes;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if user has selected subjects
+            const hasSubjects = loadUserSubjects();
+            
+            if (!hasSubjects) {
+                alert('Please select your subjects first before starting a study session.');
+                window.location.href = 'subjects.html';
+                return;
+            }
+            
+            // Start matchmaking
+            startMatchmaking();
+        });
+
+        // Load user subjects function (same as in matchingRoom.html)
+        function loadUserSubjects() {
+            const needSubjects = [
+                localStorage.getItem('needSubject1'),
+                localStorage.getItem('needSubject2'),
+                localStorage.getItem('needSubject3')
+            ];
+            
+            const helpSubjects = [
+                localStorage.getItem('helpSubject1'),
+                localStorage.getItem('helpSubject2'),
+                localStorage.getItem('helpSubject3')
+            ];
+            
+            const allNeedEmpty = needSubjects.every(subject => !subject || subject === 'null');
+            const allHelpEmpty = helpSubjects.every(subject => !subject || subject === 'null');
+            
+            return !allNeedEmpty && !allHelpEmpty;
+        }
+    </script>
 </body>
 </html>

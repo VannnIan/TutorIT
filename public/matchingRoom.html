@@ -3,292 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matching Room | Tutor IT</title>
-    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <title>Matching Room - TutorIT</title>
+    <meta name="description" content="Find study partners and start collaborative learning sessions on TutorIT.">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        /* RESET AND OVERRIDE STYLES */
-        body, html {
-            height: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        
-        section {
-            min-height: 100vh !important;
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100% !important;
-            position: relative !important;
-        }
-        
-        /* Updated Header Navigation Styles */
-        header .navigation {
-            display: flex !important;
-            gap: 15px !important;
-            margin-right: 50px !important;
-        }
-
-        .nav-pill {
-            color: #7f6b2f !important;
-            background: #FAF0E6 !important;
-            text-decoration: none !important;
-            font-weight: 500 !important;
-            letter-spacing: 1px !important;
-            padding: 12px 25px !important;
-            border-radius: 25px !important;
-            font-size: 16px !important;
-            transition: all 0.3s ease !important;
-            border: 2px solid transparent !important;
-        }
-
-        .nav-pill:hover {
-            background-color: #e6d7c3 !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        .nav-pill.active {
-            background-color: #d4b688 !important;
-            color: #2b2512 !important;
-            border: 2px solid #7f6b2f !important;
-            font-weight: 600 !important;
-        }
-
-        /* Remove old navigation styles */
-        header .navigation a:not(.nav-pill) {
-            display: none !important;
-        }
-        
-        /* CENTERING STYLES */
-        .content {
-            flex: 1 !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 auto !important;
-            padding: 20px !important;
-            box-sizing: border-box !important;
-        }
-        
-        /* MATCHING ROOM STYLES */
-        .matching-room-container {
-            width: 90% !important;
-            max-width: 900px !important;
-            background: #d4b688 !important;
-            padding: 40px !important;
-            border-radius: 20px !important;
-            border: 1px solid #7f6b2f !important;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-            margin: 0 auto !important;
-            box-sizing: border-box !important;
-        }
-        
-        .matching-title {
-            font-size: 28px !important;
-            color: #2b2512 !important;
-            margin-bottom: 30px !important;
-            text-align: center !important;
-            font-weight: bold !important;
-        }
-        
-        .matching-columns {
-            display: flex !important;
-            justify-content: center !important;
-            gap: 40px !important;
-            margin-bottom: 30px !important;
-        }
-        
-        .matching-column {
-            flex: 1 !important;
-            max-width: 400px !important;
-            padding: 20px !important;
-        }
-        
-        .column-title {
-            font-size: 22px !important;
-            color: #5a4a2a !important;
-            margin-bottom: 20px !important;
-            padding-bottom: 5px !important;
-            border-bottom: 2px solid #7f6b2f !important;
-            text-align: center !important;
-        }
-        
-        .subject-list {
-            list-style-type: none !important;
-            padding: 0 !important;
-        }
-        
-        .subject-item {
-            padding: 15px !important;
-            margin-bottom: 15px !important;
-            background: #f0e6d2 !important;
-            border-radius: 8px !important;
-            color: #2b2512 !important;
-            font-weight: 500 !important;
-            position: relative !important;
-            text-align: center !important;
-        }
-        
-        .edit-link {
-            position: absolute !important;
-            right: 15px !important;
-            color: #7f6b2f !important;
-            text-decoration: none !important;
-            font-size: 14px !important;
-        }
-        
-        .edit-link:hover {
-            text-decoration: underline !important;
-        }
-        
-        .divider {
-            width: 2px !important;
-            background: #7f6b2f !important;
-        }
-        
-        .profile-section {
-            display: flex !important;
-            justify-content: center !important;
-            gap: 60px !important;
-            margin: 30px 0 !important;
-        }
-        
-        .profile-circle {
-            width: 140px !important;
-            height: 140px !important;
-            border-radius: 50% !important;
-            background: #f0e6d2 !important;
-            border: 5px solid #7f6b2f !important;
-            overflow: hidden !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            color: #5a4a2a !important;
-            font-weight: bold !important;
-            font-size: 18px !important;
-        }
-        
-        .profile-circle img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-        }
-        
-        .matching-button-container {
-            text-align: center !important;
-            margin-top: 30px !important;
-        }
-        
-        .matching-button {
-            background-color: #7f6b2f !important;
-            color: white !important;
-            font-size: 20px !important;
-            padding: 15px 50px !important;
-            border-radius: 50px !important;
-            border: none !important;
-            cursor: pointer !important;
-            transition: all 0.3s !important;
-        }
-        
-        .matching-button:hover {
-            background-color: #5a4a2a !important;
-            transform: scale(1.05) !important;
-        }
-        
-        /* Ensure media icons stay at bottom */
-        .media-icons {
-            margin-top: auto !important;
-            width: 100% !important;
-            text-align: center !important;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section>
-        <header>
-            <h2>
-                <a href="./index.html" class="logo">Tutor IT</a>
-            </h2>
-            <div class="navigation">
-                <a href="./index.html">Home</a>
-                <a href="#">Mata Kuliah</a>
-                <a href="matchingRoom.html">Ruang Belajar</a>
-                <a href="#">Review</a>
-                <a href="quiz.html">Kuis</a>
-            </div>
+    <section class="section">
+        <!-- Header -->
+        <header class="header">
+            <a href="./index.html" class="logo">TutorIT</a>
+            <nav class="navigation">
+                <a href="./index.html" class="nav-link">Home</a>
+                <a href="subjects.html" class="nav-link">Mata Kuliah</a>
+                <a href="matchingRoom.html" class="nav-link active">Ruang Belajar</a>
+                <a href="#" class="nav-link">Review</a>
+                <a href="quiz.html" class="nav-link">Kuis</a>
+            </nav>
         </header>
 
-        <div class="content">
-            <div class="matching-room-container">
-                <div class="matching-title">New Study Session</div>
-                
-                <div class="profile-section">
-                    <div class="profile-circle">You</div>
-                    <div class="profile-circle">Partner</div>
-                </div>
-                
-                <div class="matching-columns">
-                    <div class="matching-column">
-                        <div class="column-title">Target</div>
-                        <ul class="subject-list">
-                            <li class="subject-item">
-                                Object Oriented Programming
-                                <a href="#" class="edit-link">Edit</a>
-                            </li>
-                            <li class="subject-item">
-                                Software Engineering
-                                <a href="#" class="edit-link">Edit</a>
-                            </li>
-                            <li class="subject-item">
-                                Computational Biology
-                                <a href="#" class="edit-link">Edit</a>
-                            </li>
-                            <li class="subject-item">
-                                <a href="#" style="color: #7f6b2f; text-decoration: none;">Edit Target</a>
-                            </li>
-                        </ul>
+        <!-- Main Content -->
+        <main class="content">
+            <div class="container">
+                <div class="card animate-fade-in">
+                    <div class="card-header">
+                        <h1 class="card-title">
+                            <i class="fas fa-users me-2"></i>
+                            Find Study Partners
+                        </h1>
+                        <p class="card-subtitle">Connect with other students for collaborative learning</p>
                     </div>
-                    
-                    <div class="divider"></div>
-                    
-                    <div class="matching-column">
-                        <div class="column-title">Expertise</div>
-                        <ul class="subject-list">
-                            <li class="subject-item">
-                                Human and Computer Interaction
-                                <a href="#" class="edit-link">Edit</a>
-                            </li>
-                            <li class="subject-item">
-                                Algorithm and Programming
-                                <a href="#" class="edit-link">Edit</a>
-                            </li>
-                            <li class="subject-item">
-                                Bahasa Indonesia
-                                <a href="#" class="edit-link">Edit</a>
-                            </li>
-                            <li class="subject-item">
-                                <a href="#" style="color: #7f6b2f; text-decoration: none;">Edit Expertise</a>
-                            </li>
-                        </ul>
+
+                    <!-- Profile Section -->
+                    <div class="flex justify-center items-center gap-2xl mb-2xl">
+                        <div class="flex flex-col items-center gap-lg">
+                            <div class="w-36 h-36 rounded-full bg-primary-lighter border-4 border-primary-color flex items-center justify-center">
+                                <i class="fas fa-user text-4xl text-primary-color"></i>
+                            </div>
+                            <p class="text-lg font-medium text-primary-color">Your Profile</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-arrow-right text-2xl text-primary-color"></i>
+                        </div>
+                        <div class="flex flex-col items-center gap-lg">
+                            <div class="w-36 h-36 rounded-full bg-primary-lighter border-4 border-primary-color flex items-center justify-center">
+                                <i class="fas fa-user-plus text-4xl text-primary-color"></i>
+                            </div>
+                            <p class="text-lg font-medium text-primary-color">Study Partner</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="matching-button-container">
-                    <a href="studyroom.html">
-                        <button class="matching-button">Start Matching</button>
-                    </a>
+
+                    <!-- Matching Preferences -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl mb-2xl">
+                        <!-- Subjects You Need Help With -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <i class="fas fa-question-circle me-2"></i>
+                                    Subjects You Need Help With
+                                </h2>
+                            </div>
+                            <div class="space-y-md">
+                                <div class="flex items-center p-md bg-primary-lighter rounded-lg">
+                                    <span class="font-medium" id="needSubject1">Empty</span>
+                                </div>
+                                <div class="flex items-center p-md bg-primary-lighter rounded-lg">
+                                    <span class="font-medium" id="needSubject2">Empty</span>
+                                </div>
+                                <div class="flex items-center p-md bg-primary-lighter rounded-lg">
+                                    <span class="font-medium" id="needSubject3">Empty</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subjects You Can Help With -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <i class="fas fa-lightbulb me-2"></i>
+                                    Subjects You Can Help With
+                                </h2>
+                            </div>
+                            <div class="space-y-md">
+                                <div class="flex items-center p-md bg-primary-lighter rounded-lg">
+                                    <span class="font-medium" id="helpSubject1">Empty</span>
+                                </div>
+                                <div class="flex items-center p-md bg-primary-lighter rounded-lg">
+                                    <span class="font-medium" id="helpSubject2">Empty</span>
+                                </div>
+                                <div class="flex items-center p-md bg-primary-lighter rounded-lg">
+                                    <span class="font-medium" id="helpSubject3">Empty</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Study Session Options -->
+                    <div class="card mb-2xl">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <i class="fas fa-cog me-2"></i>
+                                Study Session Preferences
+                            </h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                            <div class="flex items-center gap-md p-md bg-primary-lighter rounded-lg">
+                                <i class="fas fa-clock text-primary-color"></i>
+                                <div>
+                                    <p class="font-medium">Duration</p>
+                                    <p class="text-sm text-muted">30-60 minutes</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-md p-md bg-primary-lighter rounded-lg">
+                                <i class="fas fa-users text-primary-color"></i>
+                                <div>
+                                    <p class="font-medium">Group Size</p>
+                                    <p class="text-sm text-muted">1-2 students</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-md p-md bg-primary-lighter rounded-lg">
+                                <i class="fas fa-video text-primary-color"></i>
+                                <div>
+                                    <p class="font-medium">Video Call</p>
+                                    <p class="text-sm text-muted">Required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-center gap-lg">
+                        <a href="#" class="btn btn-primary" id="findPartnerBtn">
+                            <i class="fas fa-search me-2"></i>
+                            Find Study Partner
+                        </a>
+                        <a href="subjects.html" class="btn btn-secondary">
+                            <i class="fas fa-edit me-2"></i>
+                            Update Preferences
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
 
-        <div class="media-icons">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
     </section>
+
+    <script>
+        // Subject mapping for display
+        const subjectNames = {
+            'discrete-math': 'Discrete Mathematics',
+            'linear-algebra': 'Linear Algebra',
+            'basic-statistics': 'Basic Statistics',
+            'algorithm-programming': 'Algorithm and Programming',
+            'program-design': 'Program Design Methods',
+            'indonesian': 'Indonesian',
+            'data-structures': 'Data Structures',
+            'calculus': 'Calculus',
+            'scientific-computing': 'Scientific Computing',
+            'hci': 'Human and Computer Interaction',
+            'algorithm-design': 'Algorithm Design and Analysis',
+            'computer-networks': 'Computer Networks',
+            'computational-physics': 'Computational Physics',
+            'database-technology': 'Database Technology',
+            'artificial-intelligence': 'Artificial Intelligence',
+            'oop': 'Object Oriented Programming',
+            'computational-biology': 'Computational Biology',
+            'software-engineering': 'Software Engineering',
+            'database-design': 'Database Design'
+        };
+
+        // Function to load and display user's subject choices
+        function loadUserSubjects() {
+            // Get subjects from localStorage
+            const needSubjects = [
+                localStorage.getItem('needSubject1'),
+                localStorage.getItem('needSubject2'),
+                localStorage.getItem('needSubject3')
+            ];
+            
+            const helpSubjects = [
+                localStorage.getItem('helpSubject1'),
+                localStorage.getItem('helpSubject2'),
+                localStorage.getItem('helpSubject3')
+            ];
+
+            // Display need subjects
+            needSubjects.forEach((subject, index) => {
+                const element = document.getElementById(`needSubject${index + 1}`);
+                if (subject && subject !== 'null') {
+                    element.textContent = subjectNames[subject] || subject;
+                    element.classList.remove('text-muted');
+                } else {
+                    element.textContent = 'Empty';
+                    element.classList.add('text-muted');
+                }
+            });
+
+            // Display help subjects
+            helpSubjects.forEach((subject, index) => {
+                const element = document.getElementById(`helpSubject${index + 1}`);
+                if (subject && subject !== 'null') {
+                    element.textContent = subjectNames[subject] || subject;
+                    element.classList.remove('text-muted');
+                } else {
+                    element.textContent = 'Empty';
+                    element.classList.add('text-muted');
+                }
+            });
+
+            // Check if all subjects are empty
+            const allNeedEmpty = needSubjects.every(subject => !subject || subject === 'null');
+            const allHelpEmpty = helpSubjects.every(subject => !subject || subject === 'null');
+            
+            return !allNeedEmpty && !allHelpEmpty;
+        }
+
+        // Function to handle Find Study Partner button click
+        function handleFindPartner() {
+            const hasSubjects = loadUserSubjects();
+            
+            if (!hasSubjects) {
+                alert('Please input the subjects first');
+                return false;
+            }
+            
+            // If subjects are selected, proceed to study room
+            window.location.href = 'studyroom.html';
+            return true;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load subjects on page load
+            loadUserSubjects();
+            
+            // Add click event to Find Study Partner button
+            document.getElementById('findPartnerBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                handleFindPartner();
+            });
+        });
+    </script>
 </body>
 </html>

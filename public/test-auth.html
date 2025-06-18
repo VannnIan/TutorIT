@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Test - TutorIT</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>TutorIT Authentication Test</h1>
+    
+    <div class="test-section">
+        <h2>Backend Status</h2>
+        <div id="backend-status">Checking...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Register Test</h2>
+        <input type="text" id="reg-firstName" placeholder="First Name" value="Test">
+        <input type="text" id="reg-lastName" placeholder="Last Name" value="User">
+        <input type="email" id="reg-email" placeholder="Email" value="test@example.com">
+        <input type="text" id="reg-username" placeholder="Username" value="testuser">
+        <input type="password" id="reg-password" placeholder="Password" value="password123">
+        <br>
+        <button onclick="testRegister()">Test Register</button>
+        <div id="register-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Login Test</h2>
+        <input type="text" id="login-username" placeholder="Username" value="testuser">
+        <input type="password" id="login-password" placeholder="Password" value="password123">
+        <br>
+        <button onclick="testLogin()">Test Login</button>
+        <div id="login-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Current Session</h2>
+        <div id="session-info"></div>
+        <button onclick="clearSession()">Clear Session</button>
+    </div>
+
+    <script>
+        // Check backend status
+        async function checkBackend() {
+            try {
+                const response = await fetch('http://localhost:8000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: 'test', password: 'test' })
+                });
+                
+                document.getElementById('backend-status').innerHTML = 
+                    '<span style="color: green;">✅ Backend is running on http://localhost:8000</span>';
+            } catch (error) {
+                document.getElementById('backend-status').innerHTML = 
+                    '<span style="color: red;">❌ Backend is not running. Error: ' + error.message + '</span>';
+            }
+        }
+        
+        // Test registration
+        async function testRegister() {
+            const resultDiv = document.getElementById('register-result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            const userData = {
+                firstName: document.getElementById('reg-firstName').value,
+                lastName: document.getElementById('reg-lastName').value,
+                email: document.getElementById('reg-email').value,
+                username: document.getElementById('reg-username').value,
+                password: document.getElementById('reg-password').value
+            };
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = '<span style="color: green;">✅ Registration successful!</span>';
+                    resultDiv.className = 'test-section success';
+                } else {
+                    resultDiv.innerHTML = '<span style="color: red;">❌ Registration failed: ' + (data.error || data.message) + '</span>';
+                    resultDiv.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<span style="color: red;">❌ Error: ' + error.message + '</span>';
+                resultDiv.className = 'test-section error';
+            }
+        }
+        
+        // Test login
+        async function testLogin() {
+            const resultDiv = document.getElementById('login-result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            const userData = {
+                username: document.getElementById('login-username').value,
+                password: document.getElementById('login-password').value
+            };
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = '<span style="color: green;">✅ Login successful! User: ' + data.user.first_name + ' ' + data.user.last_name + '</span>';
+                    resultDiv.className = 'test-section success';
+                    
+                    // Save to localStorage
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    localStorage.setItem('isLoggedIn', 'true');
+                    updateSessionInfo();
+                } else {
+                    resultDiv.innerHTML = '<span style="color: red;">❌ Login failed: ' + (data.error || data.message) + '</span>';
+                    resultDiv.className = 'test-section error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<span style="color: red;">❌ Error: ' + error.message + '</span>';
+                resultDiv.className = 'test-section error';
+            }
+        }
+        
+        // Update session info
+        function updateSessionInfo() {
+            const sessionDiv = document.getElementById('session-info');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userData = localStorage.getItem('user');
+            
+            if (isLoggedIn && userData) {
+                try {
+                    const user = JSON.parse(userData);
+                    sessionDiv.innerHTML = `
+                        <strong>Logged in as:</strong> ${user.first_name} ${user.last_name}<br>
+                        <strong>Username:</strong> ${user.username}<br>
+                        <strong>Email:</strong> ${user.email}
+                    `;
+                } catch (error) {
+                    sessionDiv.innerHTML = '<span style="color: red;">Error parsing user data</span>';
+                }
+            } else {
+                sessionDiv.innerHTML = '<span style="color: orange;">Not logged in</span>';
+            }
+        }
+        
+        // Clear session
+        function clearSession() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('isLoggedIn');
+            updateSessionInfo();
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            checkBackend();
+            updateSessionInfo();
+        });
+    </script>
+</body>
+</html> 

@@ -3,51 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage TutorIT</title>
-    <link rel="stylesheet" href="./CSS/styleSheet.css">
+    <title>TutorIT - Collaborative Learning Platform</title>
+    <meta name="description" content="TutorIT adalah ruang belajar kolaboratif di mana mahasiswa bisa berbagi keahlian dan berkembang bersama.">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section>
-        <header>
-            <h2>
-                <a href="./index.html" class="logo">TutorIT</a>
-            </h2>
-        <div class="navigation">
-                <a href="./index.html">Home</a>
-                <a href="#">Mata Kuliah</a>
-                <a href="matchingRoom.html">Ruang Belajar</a>
-                <a href="#">Review</a>
-                <a href="quiz.html">Kuis</a>
-         </div>
+    <section class="section">
+        <!-- Header -->
+        <header class="header">
+            <a href="./index.html" class="logo">TutorIT</a>
+            <nav class="navigation">
+                <a href="./index.html" class="nav-link">Home</a>
+                <a href="subjects.html" class="nav-link">Mata Kuliah</a>
+                <a href="matchingRoom.html" class="nav-link">Ruang Belajar</a>
+                <a href="#" class="nav-link">Review</a>
+                <a href="quiz.html" class="nav-link">Kuis</a>
+                <div id="auth-links" class="flex gap-md">
+                    <a href="login.html" class="nav-link" id="login-link">Login</a>
+                    <a href="register.html" class="nav-link" id="register-link">Register</a>
+                </div>
+            </nav>
         </header>
-        <div>
-            <div class="content">
-                <div class="info">
-                    <h2>
-                        Mulai perjalanan belajarmu!
-                        <br>
-                    </h2>
-                    <p class="textBox">
-                        "Satu Tempat, Banyak Ilmu: Tutor Sesama Mahasiswa"
-Tutorit adalah ruang belajar kolaboratif di mana mahasiswa bisa berbagi keahlian, mengisi kekurangan satu sama lain, dan berkembang bersama. Kamu nggak perlu jadi ahli—cukup berbagi apa yang kamu tahu.
-                    </p>
-                    <div class="button-container">
-                        <a href="login.html" class="login-button">Login</a>
-                        <a href="register.html" class="register-button">Register</a>
-                    </div>
-                    
+
+        <!-- Main Content -->
+        <main class="content">
+            <div class="content-wrapper animate-fade-in">
+                <h1 class="content-title">
+                    Mulai perjalanan belajarmu!
+                </h1>
+                <p class="content-text">
+                    "Satu Tempat, Banyak Ilmu: Tutor Sesama Mahasiswa"
+                    <br><br>
+                    TutorIT adalah ruang belajar kolaboratif di mana mahasiswa bisa berbagi keahlian, 
+                    mengisi kekurangan satu sama lain, dan berkembang bersama. Kamu nggak perlu jadi ahli—cukup berbagi apa yang kamu tahu.
+                </p>
+                <div class="flex gap-lg justify-center">
+                    <a href="login.html" class="btn btn-primary">
+                        <i class="fas fa-rocket me-2"></i>
+                        Get Started
+                    </a>
+                    <a href="register.html" class="btn btn-secondary">
+                        <i class="fas fa-user-plus me-2"></i>
+                        Register
+                    </a>
                 </div>
             </div>
-        </div>
+        </main>
 
-        
-
-        <div class="media-icons">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
     </section>
+    
+    <script>
+    // Check authentication status and update navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        const authLinks = document.getElementById('auth-links');
+        
+        if (isLoggedIn) {
+            // User is logged in - show profile and logout
+            authLinks.innerHTML = `
+                <a href="profile.html" class="nav-link">Profile</a>
+                <button onclick="logout()" class="nav-link" style="background: none; border: none; cursor: pointer;">Logout</button>
+            `;
+        } else {
+            // User is not logged in - show login and register
+            authLinks.innerHTML = `
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="register.html" class="nav-link">Register</a>
+            `;
+        }
+    });
+    
+    function logout() {
+        if (confirm('Are you sure you want to logout?')) {
+            localStorage.removeItem('user');
+            localStorage.removeItem('isLoggedIn');
+            window.location.reload();
+        }
+    }
+    </script>
 </body>
 </html>

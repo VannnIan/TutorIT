@@ -43,8 +43,7 @@ header .logo{
 }
 
 header .navigation a{
-    color: #d4b688;
-    background: #ffffff;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 2px;
@@ -61,7 +60,7 @@ header .navigation a:not(:last-child){
 }
 
 header .navigation a:hover{
-    background-color: #7f6b2f;
+    font-size: 25px;
 }
 
 .content{
